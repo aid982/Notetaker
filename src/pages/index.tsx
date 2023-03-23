@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+import {useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
 import Header from "~/components/Header";
@@ -47,10 +46,7 @@ const Content: React.FC = () => {
   });
 
   const { data: notes, refetch: refetchNotes } = api.note.getAll.useQuery({ topicId: selectedTopic?.id ?? "" }, {
-    enabled: sessionData?.user !== undefined && selectedTopic !== null,
-    onSuccess: (data) => {
-
-    }
+    enabled: sessionData?.user !== undefined && selectedTopic !== null,    
   });
 
   const createNote = api.note.create.useMutation({

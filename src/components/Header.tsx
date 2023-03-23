@@ -1,8 +1,7 @@
 import React, { use } from 'react'
 import { signIn, signOut, useSession } from "next-auth/react"
-type Props = {}
 
-function Header({ }: Props) {
+function Header() {
   const { data: sessionData } = useSession();
   return (
     <div className='navbar bg-primary text-primary-content'>
